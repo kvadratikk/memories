@@ -7,7 +7,7 @@ export const signIn = (formData, history) => async (dispatch) => {
 
     dispatch({ type: AUTH, data });
 
-    history('/');
+    history('/memories/');
   } catch (error) {
     console.log(error.message);
   }
@@ -19,7 +19,7 @@ export const signUp = (formData, history) => async (dispatch) => {
 
     dispatch({ type: AUTH, data });
 
-    history('/');
+    history('/memories/');
   } catch (error) {
     console.log(error.message);
   }

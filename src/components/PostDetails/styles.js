@@ -41,7 +41,6 @@ export default makeStyles((theme) => ({
   recommendedPost: {
     margin: '20px',
     cursor: 'pointer',
-    flex: '1 1 auto',
     [theme.breakpoints.down('sm')]: {
       flex: '0 1 auto',
     },

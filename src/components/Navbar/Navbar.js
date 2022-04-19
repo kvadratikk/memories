@@ -24,7 +24,7 @@ const Navbar = () => {
   const logout = async () => {
     await dispatch({ type: LOGOUT });
     setUser(null);
-    history('/auth');
+    history('/memories/auth');
   };
 
   useEffect(() => {
@@ -40,7 +40,7 @@ const Navbar = () => {
 
   return (
     <AppBar className={classes.appBar} position='static' color='inherit'>
-      <Link to='/' className={classes.brandContainer}>
+      <Link to='/memories/' className={classes.brandContainer}>
         <img
           className={classes.logo}
           src={memoriesText}
@@ -79,7 +79,7 @@ const Navbar = () => {
         ) : (
           <Button
             component={Link}
-            to='/auth'
+            to='/memories/auth'
             variant='contained'
             color='primary'
           >
