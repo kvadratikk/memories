@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -21,11 +21,11 @@ const Navbar = () => {
 
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
-  const logout = async () => {
-    await dispatch({ type: LOGOUT });
+  const logout = useCallback(() => {
+    dispatch({ type: LOGOUT });
     setUser(null);
-    history('/memories/auth');
-  };
+    history('/auth');
+  }, [dispatch, history]);
 
   useEffect(() => {
     const token = user?.token;
@@ -36,11 +36,11 @@ const Navbar = () => {
     }
 
     setUser(JSON.parse(localStorage.getItem('profile')));
-  }, [location]);
+  }, [location, logout, user?.token]);
 
   return (
     <AppBar className={classes.appBar} position='static' color='inherit'>
-      <Link to='/memories/' className={classes.brandContainer}>
+      <Link to='/' className={classes.brandContainer}>
         <img
           className={classes.logo}
           src={memoriesText}
@@ -79,7 +79,7 @@ const Navbar = () => {
         ) : (
           <Button
             component={Link}
-            to='/memories/auth'
+            to='/auth'
             variant='contained'
             color='primary'
           >

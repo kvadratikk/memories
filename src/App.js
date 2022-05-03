@@ -11,24 +11,18 @@ const App = () => {
   const user = JSON.parse(localStorage.getItem('profile'));
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Container maxWidth='xl'>
         <Navbar />
         <Routes>
+          <Route path='/' exact element={<Navigate replace to='/posts' />} />
+          <Route path='/posts' exact element={<Home />} />
+          <Route path='/posts/search' exact element={<Home />} />
+          <Route path='/posts/:id' exact element={<PostDetails />} />
           <Route
-            path='/memories/'
+            path='/auth'
             exact
-            element={<Navigate replace to='/memories/posts' />}
-          />
-          <Route path='/memories/posts' exact element={<Home />} />
-          <Route path='/memories/posts/search' exact element={<Home />} />
-          <Route path='/memories/posts/:id' exact element={<PostDetails />} />
-          <Route
-            path='memories/auth'
-            exact
-            element={
-              !user ? <Auth /> : <Navigate replace to='/memories/posts' />
-            }
+            element={!user ? <Auth /> : <Navigate replace to='/posts' />}
           />
         </Routes>
       </Container>

@@ -36,7 +36,7 @@ const Post = () => {
 
   if (!post) return null;
 
-  const openPost = (_id) => history(`/memories/posts/${_id}`);
+  const openPost = (_id) => history(`/posts/${_id}`);
 
   if (isLoading) {
     return (

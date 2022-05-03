@@ -57,7 +57,7 @@ const Auth = () => {
 
     try {
       dispatch({ type: AUTH, data: { result, token } });
-      history('/memories/');
+      history('/');
     } catch (error) {
       console.log(error);
     }

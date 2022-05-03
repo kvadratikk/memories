@@ -40,12 +40,10 @@ const Home = () => {
     if (search.trim() || tags.length) {
       dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
       history(
-        `/memories/posts/search?searchQuery=${
-          search || 'none'
-        }&tags=${tags.join(',')}`
+        `/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`
       );
     } else {
-      history('/memories/');
+      history('/');
     }
   };
 
